@@ -8,8 +8,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @Author: whalefall
  * @Date: 2020/7/22 23:51
  * @see DelegatingIntroductionInterceptor
- *
- * 
  */
 public class Test4ProxyFactoryBean {
 	public static void main(String[] args) {
