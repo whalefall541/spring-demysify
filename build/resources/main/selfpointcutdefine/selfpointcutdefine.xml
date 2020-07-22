@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="queryMethodPointcut"
+		  class="org.springframework.mylearntest.aop.pointcut.selfdefinepointcut.QueryMethodPointcut">
+		<!--		mappedNames 将要被拦截的方法名称-->
+		<property name="classFilter">
+			<value>methodName1</value>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,3 @@
+# messages_en_US.properties文件中
+menu.file=File({0})
+menu.edit=Edit

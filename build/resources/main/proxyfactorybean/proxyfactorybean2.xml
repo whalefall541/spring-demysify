@@ -1,0 +1,43 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!--	目标对象的Bean定义-->
+	<bean id="task"
+		  class="org.springframework.mylearntest.aop.weaver.baseoninterface.MockTask" scope="prototype"/>
+
+	<!--	ProxyFactoryBean定义-->
+	<bean id="introducedTask" class="org.springframework.aop.framework.ProxyFactoryBean" scope="prototype">
+		<property name="targetName">
+			<value>task</value>
+		</property>
+		<property name="proxyInterfaces">
+			<list>
+				<value>org.springframework.mylearntest.aop.weaver.baseoninterface.ITask</value>
+				<value>org.springframework.mylearntest.aop.weaver.proxyfactorybean.ICounter</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>introductionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--	introductionInterceptor定义-->
+	<bean id="introductionInterceptor"
+		  class="org.springframework.aop.support.DelegatePerTargetObjectIntroductionInterceptor">
+		<constructor-arg index="0">
+			<value>org.springframework.mylearntest.aop.weaver.proxyfactorybean.CounterImpl</value>
+		</constructor-arg>
+
+		<constructor-arg index="1">
+			<value>org.springframework.mylearntest.aop.weaver.proxyfactorybean.ICounter</value>
+		</constructor-arg>
+	</bean>
+
+</beans>
