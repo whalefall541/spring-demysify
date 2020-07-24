@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="target" class="org.springframework.mylearntest.aop.weaver.baseoninterface.MockTask"
+		  scope="prototype"/>
+
+	<bean id="prototypeTargetSource" class="org.springframework.aop.target.PrototypeTargetSource">
+		<property name="targetBeanName">
+			<value>target</value>
+		</property>
+	</bean>
+
+	<bean id="targetProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="targetSource">
+			<ref bean="prototypeTargetSource"/>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>performanceMethodInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="performanceMethodInterceptor"
+		  class="org.springframework.mylearntest.aop.advice.perclass.PerformanceMethodInterceptor"/>
+</beans>
