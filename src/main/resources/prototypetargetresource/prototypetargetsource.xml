@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="target" class="org.springframework.mylearntest.aop.weaver.baseoninterface.MockTask"
+	<bean id="target" class="org.springframework.mylearntest.aop1.weaver.baseoninterface.MockTask"
 		  scope="prototype"/>
 
 	<bean id="prototypeTargetSource" class="org.springframework.aop.target.PrototypeTargetSource">
@@ -23,5 +23,5 @@
 	</bean>
 
 	<bean id="performanceMethodInterceptor"
-		  class="org.springframework.mylearntest.aop.advice.perclass.PerformanceMethodInterceptor"/>
+		  class="org.springframework.mylearntest.aop1.advice.perclass.PerformanceMethodInterceptor"/>
 </beans>

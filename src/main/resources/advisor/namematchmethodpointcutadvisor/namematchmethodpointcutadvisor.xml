@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
-	<bean id="advice" class="org.springframework.mylearntest.aop.advice.perclass.DiscountMethodInterceptor"/>
+	<bean id="advice" class="org.springframework.mylearntest.aop1.advice.perclass.DiscountMethodInterceptor"/>
 
 	<bean id="advisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
 		<property name="advice" ref="advice"/>

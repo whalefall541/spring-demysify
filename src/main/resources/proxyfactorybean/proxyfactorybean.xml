@@ -8,7 +8,7 @@
 
 	<!--	目标对象的Bean定义-->
 	<bean id="task"
-		  class="org.springframework.mylearntest.aop.weaver.baseoninterface.MockTask" scope="prototype"/>
+		  class="org.springframework.mylearntest.aop1.weaver.baseoninterface.MockTask" scope="prototype"/>
 
 	<!--	ProxyFactoryBean定义-->
 	<bean id="introducedTask" class="org.springframework.aop.framework.ProxyFactoryBean" scope="prototype">
@@ -17,8 +17,8 @@
 		</property>
 		<property name="proxyInterfaces">
 			<list>
-				<value>org.springframework.mylearntest.aop.weaver.baseoninterface.ITask</value>
-				<value>org.springframework.mylearntest.aop.weaver.proxyfactorybean.ICounter</value>
+				<value>org.springframework.mylearntest.aop1.weaver.baseoninterface.ITask</value>
+				<value>org.springframework.mylearntest.aop1.weaver.proxyfactorybean.ICounter</value>
 			</list>
 		</property>
 		<property name="interceptorNames">
@@ -32,7 +32,7 @@
 	<bean id="introductionInterceptor"
 		  class="org.springframework.aop.support.DelegatingIntroductionInterceptor" scope="prototype">
 		<constructor-arg>
-			<bean class="org.springframework.mylearntest.aop.weaver.proxyfactorybean.CounterImpl"/>
+			<bean class="org.springframework.mylearntest.aop1.weaver.proxyfactorybean.CounterImpl"/>
 		</constructor-arg>
 	</bean>
 

@@ -3,7 +3,7 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="task" class="org.springframework.mylearntest.aop.weaver.baseoninterface.MockTask">
+	<bean id="task" class="org.springframework.mylearntest.aop1.weaver.baseoninterface.MockTask">
 
 	</bean>
 
@@ -23,6 +23,6 @@
 	</bean>
 
 	<bean id="performanceMethodInterceptor"
-		  class="org.springframework.mylearntest.aop.advice.perclass.PerformanceMethodInterceptor"/>
+		  class="org.springframework.mylearntest.aop1.advice.perclass.PerformanceMethodInterceptor"/>
 
 </beans>

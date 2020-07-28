@@ -6,7 +6,7 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
-	<bean id="discountInterceptor" class="org.springframework.mylearntest.aop.advice.perclass.DiscountMethodInterceptor">
+	<bean id="discountInterceptor" class="org.springframework.mylearntest.aop1.advice.perclass.DiscountMethodInterceptor">
 		<property name="campaignAvailable" value="true"/>
 		<property name="discountRatio" value="90"/>
 	</bean>
