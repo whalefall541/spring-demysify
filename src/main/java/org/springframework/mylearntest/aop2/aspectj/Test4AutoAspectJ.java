@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @Author: WhaleFall541
- * @Date: 2020/8/1 0:41
+ * @Date: 2020/8/1 0:42
  */
 public class Test4AutoAspectJ {
 	public static void main(String[] args) {
