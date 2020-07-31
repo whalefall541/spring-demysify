@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 	<bean id="introductionInterceptor" class="org.springframework.aop.support.DelegatingIntroductionInterceptor">
 		<constructor-arg>
-			<bean class="org.springframework.mylearntest.aop.advice.perinstance.TesterFeatureIntroductionInterceptor"/>
+			<bean class="org.springframework.mylearntest.aop1.advice.perinstance.TesterFeatureIntroductionInterceptor"/>
 		</constructor-arg>
 	</bean>
 

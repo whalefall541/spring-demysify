@@ -17,7 +17,7 @@ import org.aspectj.lang.annotation.Pointcut;
 public class PerformanceTraceAspect {
 	private final Log logger = LogFactory.getLog(PerformanceTraceAspect.class);
 
-	@Pointcut
+	@Pointcut("execution(public  void *.method1()) || execution(public  void *.method2())")
 	public void pointcutName() {}
 
 	@Around("pointcutName()")
@@ -27,8 +27,7 @@ public class PerformanceTraceAspect {
 			sw.start();
 			return joinPoint.proceed();
 		} finally {
-			if (logger.isInfoEnabled())
-				logger.info("pt in method["
+				System.out.println("pt in method["
 						+ joinPoint.getSignature().getName()
 				+ "]>>>>>>" + sw.toString());
 		}
