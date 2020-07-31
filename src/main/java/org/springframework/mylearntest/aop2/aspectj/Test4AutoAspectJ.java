@@ -5,13 +5,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @Author: WhaleFall541
- * @Date: 2020/8/1 0:42
+ * @Date: 2020/8/1 0:43
+ *
  */
 public class Test4AutoAspectJ {
 	public static void main(String[] args) {
 //		ApplicationContext context = new ClassPathXmlApplicationContext("annotationawareaspectJautoproxycreator\\annotationawareaspectJautoproxycreator.xml");
 		ApplicationContext context = new ClassPathXmlApplicationContext("annotationawareaspectJautoproxycreator" +
 				"/annotationawareaspectJautoproxycreatorxsd.xml");
+		// todo
 		Object proxy = context.getBean("target");
 		((Foo)proxy).method1();
 		((Foo)proxy).method2();
