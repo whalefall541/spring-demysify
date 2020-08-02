@@ -8,8 +8,7 @@ public class Test4ControlFlowPointcut {
 		ControlFlowPointcut pointcut1 = new ControlFlowPointcut(TargetCaller.class,"callMethod");
 		ControlFlowPointcut pointcut = new ControlFlowPointcut(TargetCaller.class);
 		TargetObject target = new TargetObject();
-		
- 		// todo what is weaver advice
+
 		/*ProxyFactory weaver = new ProxyFactory();
 		TargetObject targetObject2use = weaver.weave(advice).to(target).accordingto(pointcut);
 		// advice的逻辑在这里不会被触发执行
