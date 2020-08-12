@@ -15,11 +15,12 @@ public class ResourceSetupAspectJ {
     private Resource resource;
 
     @Pointcut("execution(boolean *.execute())")
-    private void resourceSetupJoinpoint(){}
+    private void resourceSetupJoinpoint() {
+    }
 
     @Before("resourceSetupJoinpoint()")
     public void setupResourcesBefore() throws Throwable {
-        if(!getResource().exists())
+        if (!getResource().exists())
             FileUtils.forceMkdir(getResource().getFile());
     }
 
