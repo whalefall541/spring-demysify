@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation=
+			   "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+              	  http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd"
+	   xmlns:aop="http://www.springframework.org/schema/aop">
+
+	<aop:config>
+		<aop:aspect id="myAspect" ref="schemaBasedAspect" order="2">
+			<aop:pointcut id="privatePointcut" expression="execution(public void *.doSth())"/>
+			<aop:before pointcut-ref="privatePointcut" method="doBefore"/>
+			<aop:after-returning pointcut-ref="privatePointcut" method="doAfterReturning" returning="retValue"/>
+			<aop:after-throwing pointcut-ref="privatePointcut" method="doAfterThrowing" throwing="e"/>
+			<aop:after pointcut-ref="privatePointcut" method="doAfter"/>
+			<aop:around pointcut-ref="privatePointcut" method="doAround"/>
+		</aop:aspect>
+	</aop:config>
+
+	<bean id="schemaBasedAspect" class="org.springframework.mylearntest.aop2.schemaapsect.SchemaBasedAspect"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>
