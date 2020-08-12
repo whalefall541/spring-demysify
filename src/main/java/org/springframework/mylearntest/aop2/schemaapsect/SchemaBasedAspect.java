@@ -38,6 +38,7 @@ public class SchemaBasedAspect {
 		logger.warn("release system resources ,etc.");
 	}
 
+	// NOTE：第一个参数必须为ProceedingJoinPoint
 	public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
 		StopWatch watch = new StopWatch();
 		try {
@@ -50,24 +51,4 @@ public class SchemaBasedAspect {
 			}
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

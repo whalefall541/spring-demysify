@@ -11,8 +11,7 @@ public class Test4AutoAspectJ {
 	public static void main(String[] args) {
 		// ApplicationContext context = new ClassPathXmlApplicationContext("annotationawareaspectJautoproxycreator" +
 		//		"\\annotationawareaspectJautoproxycreator.xml");
-		ApplicationContext context = new ClassPathXmlApplicationContext("annotationawareaspectJautoproxycreator" +
-				"/annotationawareaspectJautoproxycreatorxsd.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("annotationawareaspectJautoproxycreator/annotationawareaspectJautoproxycreatorxsd.xml");
 
 		Object proxy = context.getBean("target");
 		((Foo)proxy).method1();
