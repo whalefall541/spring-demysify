@@ -34,6 +34,7 @@ public class PerformanceTraceAspect1 {
             return pjp.proceed();
         } finally {
             watch.stop();
+            System.out.println("PT in method" + pjp.getSignature().getName() + "]>>>>>" + watch.toString());
             if (logger.isInfoEnabled()) {
                 logger.info("PT in method" + pjp.getSignature().getName() + "]>>>>>" + watch.toString());
             }

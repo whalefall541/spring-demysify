@@ -32,7 +32,7 @@ public class AspectAdvice {
 
     @AfterReturning(value = "execution(boolean *.execute(String, ..))",returning = "retValue")
     public void taskExceptionCompleted(JoinPoint jp,boolean retValue) {
-        Class clazz = jp.getTarget().getClass();
+        //Class clazz = jp.getTarget().getClass();
         //getSqlMapClientTemplate().insert("BATCH.insertTaskStatus", clazz.getName());
     }
 

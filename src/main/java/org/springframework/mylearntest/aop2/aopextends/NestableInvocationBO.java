@@ -1,5 +1,7 @@
 package org.springframework.mylearntest.aop2.aopextends;
 
+import org.springframework.aop.framework.AopContext;
+
 /**
  * @Author: WhaleFall541
  * @Date: 2020/8/14 0:03
@@ -7,7 +9,8 @@ package org.springframework.mylearntest.aop2.aopextends;
  */
 public class NestableInvocationBO {
     public void method1() {
-        method2();
+        // method2(); // 优化前
+        ((NestableInvocationBO)AopContext.currentProxy()).method2();//优化后
         System.out.println("method1 executed");
     }
 
