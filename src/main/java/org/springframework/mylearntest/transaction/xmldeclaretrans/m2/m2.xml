@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!--	使用TransactionProxyFactoryBean进行声明式事务管理-->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="url" value="jdbc:mysql://192.168.43.161:3306/mango"/>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<bean id="quoteServiceTarget"
+		  class="org.springframework.mylearntest.transaction.xmldeclaretrans.common.QuoteServiceImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"/>
+	</bean>
+
+	<bean id="txProxyFactoryBean" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		  abstract="true">
+		<property name="target" ref="quoteServiceTarget"/>
+		<property name="proxyInterfaces" value="...IQuoteService"/>
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="getQuote*">PROPAGATION_SUPPORTS,readOnly,timeout_20</prop>
+				<prop key="saveQuote*">PROPAGATION_REQUIRED</prop>
+				<prop key="updateQuote*">PROPAGATION_REQUIRED</prop>
+				<prop key="deleteQuote*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="quoteService" parent="txProxyFactoryBean">
+		<property name="target" ref="quoteServiceTarget"/>
+	</bean>
+
+	<bean id="quoteService2" parent="txProxyFactoryBean">
+		<property name="target" ref="otherServiceTarget"/>
+	</bean>
+
+	<bean id="client" class="...QuoteServiceClient">
+		<property name="quoteService" ref="quoteService"/>
+	</bean>
+</beans>
